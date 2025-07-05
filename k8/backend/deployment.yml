@@ -12,23 +12,24 @@ spec:
     metadata:
       name: backend-pod
       namespace: chat-app
-      labels: 
-        app: backend
+      labels:
+        app: backend # jo uper selector m label define kia h yha bh yh use krna ha
     spec:
       containers:
       - name: chatapp-backend
-        image: trainwithshubham/chatapp-backend:latest
+        image: jrnaimat/chatapp-backend:latest
         ports:
         - containerPort: 5001
         env:
-        - name: NODE_ENV
+        - name: NODE_ENV 
           value: production
         - name: MONGODB_URI
-          value: "mongodb://mongoadmin:secret@mongodb:27017/dbname?authSource=admin"
+          value: mongodb://mongoadmin:secret@mongodb:27017/?authSource=admin
         - name: JWT_SECRET
           valueFrom:
-            secretKeyRef:
-              name: chatapp-secrets
-              key: jwt 
+           secretKeyRef:
+             key: jwt
+             name: chatapp-secrets
         - name: PORT
           value: "5001"
+          

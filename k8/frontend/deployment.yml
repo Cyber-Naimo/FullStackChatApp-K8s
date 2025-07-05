@@ -4,7 +4,6 @@ metadata:
   name: frontend-deployment
   namespace: chat-app
 spec:
-  replicas: 1
   selector:
     matchLabels:
       app: frontend
@@ -12,18 +11,12 @@ spec:
     metadata:
       name: frontend-pod
       namespace: chat-app
-      labels: 
+      labels:
         app: frontend
     spec:
       containers:
       - name: chatapp-frontend
-        image: trainwithshubham/chatapp-frontend
+        image: jrnaimat/chatapp-frontend:latest
         ports:
         - containerPort: 80
-        env:
-        - name: NODE_ENV
-          value: production
-          
-
-
 
